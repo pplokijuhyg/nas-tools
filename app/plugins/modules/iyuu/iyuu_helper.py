@@ -193,7 +193,7 @@ class IyuuHelper(object):
                                               "token": self._token,
                                               "site": site,
                                               "passkey": self.get_sha1(passkey),
-                                              "id": uid,
-                                              "sid": sid
+                                              "id": int(uid),
+                                              "sid": int(sid)
                                           })
         return result, msg
