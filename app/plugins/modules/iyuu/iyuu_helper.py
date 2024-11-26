@@ -9,7 +9,7 @@ from app.utils.commons import singleton
 @singleton
 class IyuuHelper(object):
     _version = "8.2.0"
-    _api_base = "https://dev.iyuu.cn"
+    _api_base = "https://2025.iyuu.cn"
     _sites = {}
     _token = None
     _sid_sha1 = None
