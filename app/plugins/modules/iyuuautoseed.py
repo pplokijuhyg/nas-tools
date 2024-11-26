@@ -281,7 +281,7 @@ class IYUUAutoSeed(_IPluginModule):
                                 <label class="form-label required">IYUU合作站点</label>
                                 <select class="form-control" id="iyuuautoseed_site" onchange="">
                                     {% for Site in AuthSites %}
-                                    <option value="{{ Site.site }}">{{ Site.site }}</option>
+                                    <option value="{{ Site.site }}&&{{ Site.sid }}">{{ Site.site }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -350,7 +350,10 @@ class IYUUAutoSeed(_IPluginModule):
         """
         IYUU绑定合作站点
         """
-        state, msg = self.iyuuhelper.bind_site(site=site,
+        info = site.split("&&")
+
+        state, msg = self.iyuuhelper.bind_site(site=info[0],
+                                               sid=info[1],
                                                passkey=passkey,
                                                uid=uid)
         return {"code": 0 if state else 1, "msg": msg}

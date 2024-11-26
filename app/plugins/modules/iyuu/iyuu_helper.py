@@ -174,7 +174,7 @@ class IyuuHelper(object):
             print(msg)
             return []
 
-    def bind_site(self, site, passkey, uid):
+    def bind_site(self, site, sid, passkey, uid):
         """
         绑定站点
         :param site: 站点名称
@@ -188,6 +188,7 @@ class IyuuHelper(object):
                                               "token": self._token,
                                               "site": site,
                                               "passkey": self.get_sha1(passkey),
-                                              "id": uid
+                                              "id": uid,
+                                              "sid": sid
                                           })
         return result, msg
