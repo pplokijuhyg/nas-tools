@@ -513,7 +513,7 @@ class Qbittorrent(_IDownloadClient):
         if not self.qbc:
             return False
         try:
-            return self.qbc.torrents_pause(torrent_hashes=ids)
+            return self.qbc.torrents_stop(torrent_hashes=ids)
         except Exception as err:
             log.error(f"【{self.client_name}】{self.name} 停止下载出错：{str(err)}")
             return False
