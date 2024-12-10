@@ -183,9 +183,9 @@ class Qbittorrent(_IDownloadClient):
         if not self.qbc:
             return [], True
         try:
+            log.warn(f"【{self.client_name}】{self.name} 获取种子列表出错：{str(ids) + str(status)}")
             torrents = self.qbc.torrents_info(torrent_hashes=ids,
                                               status_filter=status)
-            log.warn(f"【{self.client_name}】{self.name} 获取种子列表出错：{str(torrents)}")
             if tag:
                 results = []
                 if not isinstance(tag, list):
