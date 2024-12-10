@@ -192,7 +192,7 @@ class Qbittorrent(_IDownloadClient):
                 for torrent in torrents:
                     include_flag = True
                     for t in tag:
-                        if t and t not in torrent.get("tags"):
+                        if t and t not in torrent.get("tags").split(","):
                             include_flag = False
                             break
                     if include_flag:
