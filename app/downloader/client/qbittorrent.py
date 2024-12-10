@@ -182,7 +182,10 @@ class Qbittorrent(_IDownloadClient):
         """
         if not self.qbc:
             return [], True
+        
         try:
+            if status and len(status) == 1:
+                status = status[0]
             torrents = self.qbc.torrents_info(torrent_hashes=ids,
                                               status_filter=status)
             if tag:
@@ -192,7 +195,7 @@ class Qbittorrent(_IDownloadClient):
                 for torrent in torrents:
                     include_flag = True
                     for t in tag:
-                        if t and t not in torrent.get("tags").split(","):
+                        if t and t not in torrent.get("tags"):
                             include_flag = False
                             break
                     if include_flag:
