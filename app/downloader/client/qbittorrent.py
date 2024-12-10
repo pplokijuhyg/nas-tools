@@ -184,7 +184,7 @@ class Qbittorrent(_IDownloadClient):
             return [], True
         
         try:
-            if status and status.len() == 1:
+            if status and len(status) == 1:
                 status = status[0]
             log.warn(f"【{self.client_name}】{self.name} 获取种子列表出错：{str(ids) + str(status)}")
             torrents = self.qbc.torrents_info(torrent_hashes=ids,
