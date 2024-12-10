@@ -185,6 +185,7 @@ class Qbittorrent(_IDownloadClient):
         try:
             torrents = self.qbc.torrents_info(torrent_hashes=ids,
                                               status_filter=status)
+            log.warn(f"【{self.client_name}】{self.name} 获取种子列表出错：{str(torrents)}")
             if tag:
                 results = []
                 if not isinstance(tag, list):
@@ -192,7 +193,7 @@ class Qbittorrent(_IDownloadClient):
                 for torrent in torrents:
                     include_flag = True
                     for t in tag:
-                        if t and t not in torrent.get("tags").split(","):
+                        if t and t not in torrent.get("tags"):
                             include_flag = False
                             break
                     if include_flag:
